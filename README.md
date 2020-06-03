@@ -12,6 +12,12 @@ Some things I'd like to implement to polish the program up a bit:
 - Pausing
 - Correcting the apple's flickering when updating the window
 
+# Controls
+Movements relies on arrow keys only.
+There are no walls, the snake loops around.
+Quit by pressing 'Q' or clicking the exit icon.
+If you lose the game, the window terminates immediately.
+
 # Tools used
 - SFML2 ( 32 - bit ) for Mingw
 - VS Code
