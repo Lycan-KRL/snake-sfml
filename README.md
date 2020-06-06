@@ -10,7 +10,7 @@ I'm happy with the results, but the game still needs a few things.
 Some things I'd like to implement to polish the program up a bit:
 - [ ] A simple menu ( working with the mouse )
 - [ ] Proper end screen
-- [ ] Pausing
+- [ X ] Pausing
 - [ ] Correcting the apple's flickering when updating the window
 
 ## Controls
