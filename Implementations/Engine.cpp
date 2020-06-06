@@ -90,6 +90,9 @@ void Engine::runLoop()
                         if ( snek->lastDirection == LEFT ) break;
                         dir = RIGHT;
                         break;
+                    case sf::Keyboard::P:
+                        dir = STOP;
+                        break;
                 };
             }
         }
