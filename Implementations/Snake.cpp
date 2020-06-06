@@ -136,4 +136,6 @@ void Snake::addSnakeSegment()
 {
     ++length;
     body.push_back( new Position );
+    body[length-1]->x = body[length-2]->x;
+    body[length-1]->y = body[length-2]->y;
 }
