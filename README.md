@@ -15,6 +15,7 @@ Some things I'd like to implement to polish the program up a bit:
 
 ## Controls
 Movements relies on arrow keys only. <br>
+Pause the game by pressing 'P' <br>
 There are no walls, the snake loops around. <br>
 Quit by pressing 'Q' or clicking the exit icon. <br>
 If you lose the game, the window terminates immediately. <br>
