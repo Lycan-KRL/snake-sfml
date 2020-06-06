@@ -34,6 +34,16 @@ Engine::Engine( sf::RenderWindow& window )
     }
     // - - -
     app = make_unique<Apple>( t3, rows, columns );
+
+    if ( !t4.loadFromFile( "Images/lostScreen.PNG" ) )
+    {
+        std::cout << "Error in loading end screen" << std::endl;
+    }
+    // - - -
+    endScreen.setTexture( t4 );
+    sf::Vector2u size( endScreen.getLocalBounds().width, endScreen.getLocalBounds().height );
+    endScreen.setOrigin( size.x/2, size.y/2 );
+    endScreen.setPosition( (float)bounds.x/2, (float)bounds.y/2 );
 }
 
 void Engine::renderEntities()
@@ -47,8 +57,6 @@ void Engine::renderEntities()
 
 void Engine::runLoop()
 {
-    // Event handler
-    sf::Event e;
     // FPS clock handler
     sf::Clock clock;
     // Game will run at 100fps
@@ -57,6 +65,9 @@ void Engine::runLoop()
     // Game loop
     while ( ref->isOpen() )
     {
+        // Event handler
+        sf::Event e;
+
         // Time calculations
         float timePassed = clock.restart().asSeconds();
         deltaT += timePassed;
@@ -111,9 +122,10 @@ void Engine::runLoop()
         // Update the screen
         renderEntities();
 
+        // Redirect into a separate loop is game is lost
         if ( !continueRunning )
         {
-            ref->close();
+            endLoop();
         }
     }
 }
@@ -141,5 +153,28 @@ void Engine::runChecks()
     if ( snek->hitDeathCollision() )
     {
         continueRunning = false;
+    }
+}
+
+void Engine::endLoop()
+{
+    while ( ref->isOpen())
+    {
+        sf::Event e;
+        while ( ref->pollEvent( e ) )
+        {
+            if ( e.type == sf::Event::Closed
+                || sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) )
+            {
+                ref->close();
+            }
+
+            ref->clear();
+            drawBoard();
+            snek->drawSnake( ref );
+            app->drawApple( ref );
+            ref->draw( endScreen );
+            ref->display();
+        }
     }
 }
