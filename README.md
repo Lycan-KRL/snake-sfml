@@ -11,7 +11,7 @@ Some things I'd like to implement to polish the program up a bit:
 - [ ] A simple menu ( working with the mouse )
 - [ ] Proper end screen
 - [X] Pausing
-- [ ] Correcting the apple's flickering when updating the window
+- [X] Correcting the apple's flickering when updating the window
 
 ## Controls
 Movements relies on arrow keys only. <br>
